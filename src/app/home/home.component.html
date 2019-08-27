@@ -1,0 +1,95 @@
+<div class="row body">
+    <div class="col-lg-3" *ngIf="showHideSideBar">
+    <app-sidebar></app-sidebar>;
+    </div>
+         <div class="col-lg-9" >
+        <app-navbar 
+        [showSideBar]="showHideSideBar"
+        (showSideBarChange)="onshowSideBarChange($event)"
+        ></app-navbar>
+        <app-content></app-content>
+          </div>
+</div>
+
+<head>
+<title>Broad Band Price Table Responsive Widget Template | Home :: w3layouts</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Broad Band Price Table, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup 
+Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+         addEventListener("load", function () {
+         	setTimeout(hideURLbar, 0);
+         }, false);
+         
+         function hideURLbar() {
+         	window.scrollTo(0, 1);
+         }
+    </script>
+			</head>
+<body>
+
+
+
+<div class="main">
+			<div class="main-heading w3ls">
+				<h1>Bienvenu chez TCreative</h1>
+			</div>
+			<div class="pricing-table">
+				<div class="pricing">
+					<div class="price-top clr1 w3ls">
+						<h3>Formations</h3>
+					</div>
+					<div class="price-bottom ">
+						
+						<div class="price2">
+					<ul>
+							<li><i class="fas fa-download"></i>Des formations de qualite</li>
+							<li><i class="fas fa-calendar-alt"></i>Propositions de formations</li>
+							<li><i class="fas fa-tachometer-alt"></i>Retraits de formation</li>
+						</ul>
+								<a href="#" class="clr1 button" [routerLink]="['/Formation']" routerLinkActive="router-link-active">Options formation</a>
+						</div>
+					</div>
+				</div>
+			<div class="pricing pri2">
+					<div class="price-top clr2">
+						<h3>Etudiant</h3>
+					</div>
+				<div class="price-bottom">
+					
+					<div class="price2 w3ls">
+						<ul>
+							<li><i class="fas fa-download"></i>Inscription des etudiants </li>
+							<li><i class="fas fa-calendar-alt"></i>Modifications profils etudiants </li>
+							<li><i class="fas fa-tachometer-alt"></i>Suppression de profils </li>
+					
+						</ul>
+						<a href="#" class="clr2 button" [routerLink]="['/Etudiant']" routerLinkActive="router-link-active">Options Etudiants</a>
+					</div>
+				</div>
+			</div>
+				
+				<div class="pricing pri3 w3ls">
+					<div class="price-top clr3">
+						<h3>Professeur</h3>
+					</div>
+					<div class="price-bottom">
+					
+						<div class="price2">
+						<ul>
+							<li><i class="fas fa-download"></i>Inscription des enseignants </li>
+							<li><i class="fas fa-calendar-alt"></i>Modifications profils enseignants </li>
+							<li><i class="fas fa-tachometer-alt"></i>Suppression des enseignants </li>
+					    </ul>
+							<a href="#" class="clr3 button" [routerLink]="['/professeur']" routerLinkActive="router-link-active">OPtions Professeur </a>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+		</div>	
+					<div class="clear"></div>
+				</body>

@@ -1,11 +1,26 @@
-<h2>Etudiants</h2>
+ <div class="row body">
+    <div class="col-lg-3" *ngIf="showHideSideBar">
+    <app-sidebar></app-sidebar>;
+    </div>
+         <div class="col-lg-9" >
+        <app-navbar 
+        [showSideBar]="showHideSideBar"
+        (showSideBarChange)="onshowSideBarChange($event)"
+        ></app-navbar>
+        <app-content></app-content>
+          </div>
+</div>
+<h2>__________________________________Etudiants</h2>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                       <th>Nom</th><th>Prenom</th><th>Photo Etudiants</th><th>Date de naissance</th><th>Date d'inscription</th><th>Montant</th><th>Dernier mois paye</th><th>Adresse</th><th>Num Telephone</th>
+                        <th>Nom</th><th>Prenom</th><th>Photo Etudiants</th><th>Date de naissance</th><th>Date d'inscription</th><th>Montant</th><th>Dernier mois paye</th><th>Adresse</th><th>Num Telephone</th> 
+                       <th>
+                           <button class="btn btn-outline-success" (click)="operation='add'; initEtudiant()" >Ajouter Etudiant</button>
+                        </th>
                     </tr>
 
                 </thead>
@@ -13,78 +28,120 @@
                 <tbody>
                     <tr *ngFor="let etudiant of Etudiants">
                     
-                <td>{{etudiant.nom}}</td><td>{{etudiant.prenom}}</td><td>{{etudiant.photoEtud}}</td><td>{{etudiant.datenais}}</td><td>{{etudiant.dateinsc}}</td> <td>{{etudiant.montant}}</td> <td>{{etudiant.dernmoipay}}</td><td>{{etudiant.adress}}</td><td>{{etudiant.telper}}</td>
+                  <td>{{etudiant.nomPer}}</td><td>{{etudiant.prenomPer}}</td><td>{{etudiant.photoEtud}}</td><td>{{etudiant.dateNaissance}}</td><td>{{etudiant.dateInscription}}</td> <td>{{etudiant.montantPayer}}</td> <td>{{etudiant.dernierMoisPayer}}</td><td>{{etudiant.adressePer}}</td><td>{{etudiant.telPer}}</td>
      
+                 <td>
+                      <button class="btn btn-outline-primary btn-sm" (click)="operation='edit'; selectedEtudiant=etudiant;">Editer</button>
+                       <button class="btn btn-outline-danger btn-sm"(click)="operation='remove';selectedEtudiant=etudiant;">Supprimer</button>
+                 </td>       
+
                     </tr> 
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-7">
+        <div class="col-lg-5">
             <div class="card">
                     <div class="card-header bg-info text-white">
-                       Inscription
+                        {{operation == 'add' ? 'Ajouter Etudiant':
+                          operation == 'edit' ? 'Modifier Etudiant':
+                          operation == 'remove' ? 'Supprimer Etudiant' :'' }}
+                       
                     </div>
 
                     <div class="card-body">
-                         <form [formGroup]="EtudiantForm">
-                             <div class="form-group">
-                                <label for="">Nom:</label>
-                                <input type="text" class="form-control" formControlName="nom"/>
+
+                        
+                        <div *ngIf="operation == 'add' || operation == 'edit' "  >
+                            <form [formGroup]="EtudiantForm">
+
+                            <!-- <div class="form-group">
+                                <label for="">Pseudo:</label>
+                                <input type="number" class="form-control" formControlName="idPer"/>
                              </div>
-                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['nom'].invalid && (EtudiantForm.controls['nom'].touched || EtudiantForm.controls['nom'].dirty)">
+                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['idPer'].invalid && (EtudiantForm.controls['idPer'].touched || EtudiantForm.controls['idPer'].dirty)">
+                                    L'identifiant est obligatoire
+
+                                </div> -->
+
+                            <div class="form-group">
+                                <label for="">Nom:</label>
+                                <input type="text" class="form-control" formControlName="nomPer" [(ngModel)]="selectedEtudiant.nomPer"  />
+                             </div>
+                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['nomPer'].invalid && (EtudiantForm.controls['nomPer'].touched || EtudiantForm.controls['nomPer'].dirty)">
                                     Le nom est obligatoire
 
                                 </div>
                              <div class="form-group">
                                 <label for="">Prenom:</label>
-                                <input type="text" class="form-control" formControlName="prenom"/>
+                                <input type="text" class="form-control" formControlName="prenomPer"  [(ngModel)]="selectedEtudiant.prenomPer" />
                              </div>
-                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['prenom'].invalid && (EtudiantForm.controls['prenom'].touched || EtudiantForm.controls['prenom'].dirty)">
+                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['prenomPer'].invalid && (EtudiantForm.controls['prenomPer'].touched || EtudiantForm.controls['prenomPer'].dirty)">
                                     Le prenom est obligatoire
 
                                 </div>
 
-                                  <div class="form-group">
-                                <label for="">Lien de photo:</label>
-                                <input type="text" class="form-control" formControlName="photoEtud"/>
-                             </div>
-
-                             <div class="form-group">
-                                <label for="">Date de naissance(format:jj/mm/aa):</label>
-                                <input type="text" class="form-control" formControlName="datenais"/>
-                             </div>
-
-                                  <div class="form-group">
-                                <label for="">Date d'inscription:</label>
-                                <input type="text" class="form-control" formControlName="dateinsc"/>
-                             </div>
-
-                             <div class="form-group">
-                                <label for="">Date d'inscription:</label>
-                                <input type="text" class="form-control" formControlName="dateinsc"/>
-                             </div>
-
-                             <div class="form-group">
-                                <label for="">Montant formation:</label>
-                                <input type="text" class="form-control" formControlName="montant"/>
-                             </div>
-
-                             <div class="form-group">
-                                <label for="">Dernier mois paye:</label>
-                                <input type="text" class="form-control" formControlName="dernmoipay"/>
-                             </div>
-
-                             <div class="form-group">
+                                <div class="form-group">
                                 <label for="">Adresse:</label>
-                                <input type="text" class="form-control" formControlName="adress"/>
+                                <input type="text" class="form-control" formControlName="adressePer" [(ngModel)]="selectedEtudiant.adressePer"/>
                              </div>
 
                              <div class="form-group">
                                 <label for="">Telephone:</label>
-                                <input type="text" class="form-control" formControlName="telper"/>
+                                <input type="text" class="form-control" formControlName="telPer" [(ngModel)]="selectedEtudiant.telPer"/>
                              </div>
-                             <button class="btn btn-success" [disabled]="EtudiantForm.invalid">Ajouter</button>
+
+                                  <div class="form-group">
+                                <label for="">Lien de photo:</label>
+                                <input type="text" class="form-control" formControlName="photoEtud" [(ngModel)]="selectedEtudiant.photoEtud"/>
+                             </div>
+
+                             <div class="form-group">
+                                <label for="">Date de naissance(format:jj/mm/aa):</label>
+                                <input type="text" class="form-control" formControlName="dateNaissance" [(ngModel)]="selectedEtudiant.dateNaissance"/>
+                             </div>
+
+                                  <div class="form-group">
+                                <label for="">Date d'inscription:</label>
+                                <input type="text" class="form-control" formControlName="dateInscription" [(ngModel)]="selectedEtudiant.dateInscription"/>
+                             </div>
+
+                             
+
+                             <div class="form-group">
+                                <label for="">Montant formation:</label>
+                                <input type="text" class="form-control" formControlName="montantPayer" [(ngModel)]="selectedEtudiant.montantPayer"/>
+                             </div>
+
+                             <div class="form-group">
+                                <label for="">Dernier mois paye:</label>
+                                <input type="text" class="form-control" formControlName="dernierMoisPayer" [(ngModel)]="selectedEtudiant.dernierMoisPayer"/>
+                             </div>
+
+          
+                             <button class="btn btn-success" [disabled]="EtudiantForm.invalid" 
+                             (click)="operation == 'add' ? addEtudiant() : updateEtudiant() " >
+                             {{operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : '' }}
+                           
+                            </button>
                          </form>
+                        </div>
+
+                            <div *ngIf="operation == 'remove'">
+                                <p class="card_title">
+                                Identifiant: {{selectedEtudiant.idPer}}
+
+                            </p>
+                            <p>
+                                Voulez vous supprimer cet etudiant?
+                            </p>
+                            <button class="btn btn-success" [disabled]="!selectedEtudiant.idPer" (click)="deleteEtudiant()"
+                            >Confirmer</button>
+
+
+                            </div>
+                                                    
+
+                         
 
                     </div>
                     <div class="card-footer">
@@ -93,5 +150,5 @@
             </div>
 
         </div>
-    </div>
 </div>
+

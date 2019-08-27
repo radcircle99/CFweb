@@ -1,0 +1,143 @@
+ <div class="row body">
+    <div class="col-lg-3" *ngIf="showHideSideBar">
+    <app-sidebar></app-sidebar>;
+    </div>
+         <div class="col-lg-9" >
+        <app-navbar 
+        [showSideBar]="showHideSideBar"
+        (showSideBarChange)="onshowSideBarChange($event)"
+        ></app-navbar>
+        <app-content></app-content>
+          </div>
+</div>
+<h2>__________________________________Professeurs</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nom</th><th>Prenom</th><th>Adresse</th> <th>Telephone</th> <th>Pourcentage</th><th>Salaire</th><th>Dernier mois de salaire</th> 
+                       <th>
+                           <button class="btn btn-outline-success" (click)="operation='add'; initProf()" >Ajouter Enseignant</button>
+                        </th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let professeur of Prof">
+                    
+                  <td>{{professeur.nomPer}}</td><td>{{professeur.prenomPer}}</td><td>{{professeur.adressePer}}</td><td>{{professeur.telPer}}</td><td>{{professeur.pourcentage}}</td> <td>{{professeur.remun}}</td> <td>{{professeur.dernierMoisRemun}}</td>
+     
+                 <td>
+                      <button class="btn btn-outline-primary btn-sm" (click)="operation='edit'; selectedProf=professeur;">Editer</button>
+                       <button class="btn btn-outline-danger btn-sm"(click)="operation='remove';selectedProf=professeur;;">Supprimer</button>
+                 </td>       
+
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                    <div class="card-header bg-info text-white">
+                        {{operation == 'add' ? 'Ajouter Professeur':
+                          operation == 'edit' ? 'Modifier Professeur':
+                          operation == 'remove' ? 'Supprimer Professeur' :'' }}
+                       
+                    </div>
+
+                    <div class="card-body">
+
+                        
+                        <div *ngIf="operation == 'add' || operation == 'edit' "  >
+                            <form [formGroup]="profForm">
+
+                            <!-- <div class="form-group">
+                                <label for="">Pseudo:</label>
+                                <input type="number" class="form-control" formControlName="idPer"/>
+                             </div>
+                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['idPer'].invalid && (EtudiantForm.controls['idPer'].touched || EtudiantForm.controls['idPer'].dirty)">
+                                    L'identifiant est obligatoire
+
+                                </div> -->
+
+                            <div class="form-group">
+                                <label for="">Nom:</label>
+                                <input type="text" class="form-control" formControlName="nomPer" [(ngModel)]="selectedProf.nomPer"  />
+                             </div>
+                                <div class="alert alert-danger" *ngIf="profForm.controls['nomPer'].invalid && (profForm.controls['nomPer'].touched || profForm.controls['nomPer'].dirty)">
+                                    Le nom est obligatoire
+
+                                </div>
+                             <div class="form-group">
+                                <label for="">Prenom:</label>
+                                <input type="text" class="form-control" formControlName="prenomPer"  [(ngModel)]="selectedProf.prenomPer" />
+                             </div>
+                                <div class="alert alert-danger" *ngIf="profForm.controls['prenomPer'].invalid && (profForm.controls['prenomPer'].touched || profForm.controls['prenomPer'].dirty)">
+                                    Le prenom est obligatoire
+
+                                </div>
+
+                                <div class="form-group">
+                                <label for="">Adresse:</label>
+                                <input type="text" class="form-control" formControlName="adressePer" [(ngModel)]="selectedProf.adressePer"/>
+                             </div>
+
+                             <div class="form-group">
+                                <label for="">Telephone:</label>
+                                <input type="text" class="form-control" formControlName="telPer" [(ngModel)]="selectedProf.telPer"/>
+                             </div>
+
+                                  <div class="form-group">
+                                <label for="">Pourcentage:</label>
+                                <input type="number" class="form-control" formControlName=pourcentage [(ngModel)]="selectedProf.pourcentage"/>
+                             </div>
+
+                             <div class="form-group">
+                                <label for="">Salaire</label>
+                                <input type="number" class="form-control" formControlName="remun" [(ngModel)]="selectedProf.remun"/>
+                             </div>
+
+                                  <div class="form-group">
+                                <label for="">Dernier Mois de Salaire:</label>
+                                <input type="text" class="form-control" formControlName="dernierMoisRemun" [(ngModel)]="selectedProf.dernierMoisRemun"/>
+                             </div>
+
+                             
+
+                            <button class="btn btn-success" [disabled]="profForm.invalid" 
+                             (click)="operation == 'add' ? addProf() : updateProf() " >
+                             {{operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : '' }}
+                           
+                            </button>
+                         </form>
+                        </div>
+
+                            <div *ngIf="operation == 'remove'">
+                                <p class="card_title">
+                                Identifiant: {{selectedProf.idPer}}
+
+                            </p>
+                            <p>
+                                Voulez vous supprimer cet enseignant?
+                            </p>
+                            <button class="btn btn-success" [disabled]="!selectedProf.idPer" (click)="deleteProf()"
+                            >Confirmer</button>
+
+
+                            </div>
+                                                    
+
+                         
+
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+            </div>
+
+        </div>
+</div>
+

@@ -1,13 +1,15 @@
 export class etudiant {
-    constructor(public nom?:String,
-                public prenom?:String,
+    constructor(public idPer?:number,
+                public nomPer?:String,
+                public prenomPer?:String,
+                public adressePer?:String,
+                public telPer?:Number,
                 public photoEtud?:String,
-                public datenais?:String,
-                public dateinsc?:String,
-                public montant?:number,
-                public dernmoipay?:String,
-                public adress?:String,
-                public telper?:Number,
+                public dateNaissance?:String,
+                public dateInscription?:String,
+                public montantPayer?:number,
+                public dernierMoisPayer?:String,
+    
                 ){
 
                 }

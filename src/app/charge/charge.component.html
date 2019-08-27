@@ -1,0 +1,124 @@
+     <div class="row body">
+    <div class="col-lg-3" *ngIf="showHideSideBar">
+    <app-sidebar></app-sidebar>;
+    </div>
+         <div class="col-lg-9" >
+        <app-navbar 
+        [showSideBar]="showHideSideBar"
+        (showSideBarChange)="onshowSideBarChange($event)"
+        ></app-navbar>
+        <app-content></app-content>
+          </div>
+</div>
+<h2>__________________________________Charges</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                       <th>Nom de charge</th><th>Type de Charge</th><th>Date de Charge</th><th>Montant de la charge</th> 
+                         <th>
+                           <button class="btn btn-outline-success" (click)="operation='add'; initCharge()" >Ajout de Facture</button>
+                        </th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                     <tr *ngFor="let charge of Charge">
+                    
+                    <td>{{charge.nomCharge}}</td><td>{{charge.typeCharge}}</td><td>{{charge.dateCharge}}</td><td>{{charge.montantCharge}}</td>
+     
+                <td>
+                      <button class="btn btn-outline-primary btn-sm" (click)="operation='edit'; selectedCharge=charge;">Editer</button>
+                       <button class="btn btn-outline-danger btn-sm"(click)="operation='remove'; selectedCharge=charge;"> Supprimer</button>
+                 </td>     
+
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                    <div class="card-header bg-info text-white">
+                        {{operation == 'add' ? 'Ajouter une charge':
+                          operation == 'edit' ? 'Modifier la charge':
+                          operation == 'remove' ? 'Supprimer une charge' :'' }}
+                       
+                    </div>
+
+                    <div class="card-body">
+
+                        
+                        <div *ngIf="operation == 'add' || operation == 'edit' "  >
+                            <form [formGroup]="chargeForm">
+
+                            <!-- <div class="form-group">
+                                <label for="">Pseudo:</label>
+                                <input type="number" class="form-control" formControlName="idPer"/>
+                             </div>
+                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['idPer'].invalid && (EtudiantForm.controls['idPer'].touched || EtudiantForm.controls['idPer'].dirty)">
+                                    L'identifiant est obligatoire
+
+                                </div> -->
+                                <div class="form-group">
+                           <label for="">Nom de Charge:</label>
+                                <input type="text" class="form-control" formControlName="nomCharge" [(ngModel)]="selectedCharge.nomCharge"/>
+                             </div>
+                                <div class="alert alert-danger" *ngIf="chargeForm.controls['nomCharge'].invalid && (chargeForm.controls['nomCharge'].touched || chargeForm.controls['nomCharge'].dirty)">
+                                    Le nom de la facture est obligatoire
+
+                                </div>
+
+                                <div class="form-group">
+                                <label for="">Type de Charge:</label>
+                                <input type="text" class="form-control" formControlName="typeCharge" [(ngModel)]="selectedCharge.typeCharge"/>
+                             </div>
+
+                                  <div class="form-group">
+                                <label for="">Date d'arrivee:</label>
+                                <input type="text" class="form-control" formControlName="dateCharge" [(ngModel)]="selectedCharge.dateCharge"/>
+                             </div>
+
+
+                                  <div class="form-group">
+                                <label for="">Montant de la facture(en DH):</label>
+                                <input type="number" class="form-control" formControlName="montantCharge" [(ngModel)]="selectedCharge.montantCharge"/>
+                             </div>
+
+                             
+          
+                             <button class="btn btn-success" [disabled]="chargeForm.invalid" 
+                             (click)="operation == 'add' ? addCharge() : updateCharge() " >
+                             {{operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : '' }}
+                           
+                            </button>
+                         </form>
+                        </div>
+
+                            <div *ngIf="operation == 'remove'">
+                                <p class="card_title">
+                                Nom de Charge: {{selectedCharge.idCharge}}
+
+                            </p>
+                            <p>
+                                Voulez vous supprimer cette Facture?
+                            </p>
+                            <button class="btn btn-success" [disabled]="!selectedCharge.idCharge" (click)="deleteCharge()"
+                            >Confirmer</button>
+
+
+                            </div>
+                                                    
+
+                         
+
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+            </div>
+
+        </div>
+</div>

@@ -1,0 +1,83 @@
+<head>
+    <title>Login</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Key Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    
+	<link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+
+</head>
+
+<body>
+
+<section class="main">
+	<div class="layer">
+		
+		<div class="bottom-grid">
+			<div class="logo">
+				<h1> TCreative</h1>
+			</div>
+			<!--
+			<div class="links">
+				<ul class="links-unordered-list">
+					<li class="active">
+						<a href="#" class="">Login</a>
+					</li>
+					<li class="">
+						<a href="#" class="">About Us</a>
+					</li>
+					<li class="">
+						<a href="#" class="">Register</a>
+					</li>
+					<li class="">
+						<a href="#" class="">Contact</a>
+					</li>
+				</ul>
+			</div>
+			-->
+		</div>
+		<div class="content-w3ls">
+			
+			<div class="text-center icon">
+				
+			</div>
+			<div class="content-bottom">
+				<form [formGroup]="loginForm" (submit)="login()"  >
+					<div class="field-group">
+						<span class="fa fa-user" aria-hidden="true"></span>
+						<div class="wthree-field">
+							<input  id="text1" type="text" value="" placeholder="Username" name="username" formControlName="username" [(ngModel)]="credentials.username" >
+						</div>
+					</div>
+					<div class="field-group">
+						<span class="fa fa-lock" aria-hidden="true"></span>
+						<div class="wthree-field">
+							<input  id="myInput" type="Password" placeholder="Password" name="password" formControlName="password" [(ngModel)]="credentials.password">
+						</div>
+					</div>
+					<div class="wthree-field">
+						<a href=""></a>
+						<button type="submit" class="btn">Log In</button>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		
+			
+	</div>
+    
+</section>
+
+</body>
