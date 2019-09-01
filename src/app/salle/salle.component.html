@@ -1,0 +1,118 @@
+     <div class="row body">
+    <div class="col-lg-3" *ngIf="showHideSideBar">
+    <app-sidebar></app-sidebar>;
+    </div>
+         <div class="col-lg-12" >
+        <app-navbar 
+        [showSideBar]="showHideSideBar"
+        (showSideBarChange)="onshowSideBarChange($event)"
+        ></app-navbar>
+        <app-content></app-content>
+          </div>
+</div>
+<div class= "header" style = "font-family:georgia,garamond,serif;font-size:16px;">
+    <br>
+    <br>
+    <br>
+    <h2>Salles</h2>
+    
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                       <th>Numero de salle</th><th>Capacite de Salle</th>
+                         <th>
+                           <button class="btn btn-outline-success" (click)="operation='add'; initSalle()" >Ajout de Salle</button>
+                        </th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                     <tr *ngFor="let salle of Salle">
+                    
+                    <td>{{salle.numeroSalle}}</td><td>{{salle.capaciteSalle}}</td>
+     
+                <td>
+                      <button class="btn btn-outline-primary btn-sm" (click)="operation='edit'; selectedSalle=salle;">Editer</button>
+                       <button class="btn btn-outline-danger btn-sm"(click)="operation='remove'; selectedSalle=salle;"> Supprimer</button>
+                 </td>     
+
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                    <div class="card-header bg-info text-white">
+                        {{operation == 'add' ? 'Ajouter une salle':
+                          operation == 'edit' ? 'Modifier la salle':
+                          operation == 'remove' ? 'Supprimer une salle' :'' }}
+                       
+                    </div>
+
+                    <div class="card-body">
+
+                        
+                        <div *ngIf="operation == 'add' || operation == 'edit' "  >
+                            <form [formGroup]="salleForm">
+
+                            <!-- <div class="form-group">
+                                <label for="">Pseudo:</label>
+                                <input type="number" class="form-control" formControlName="idPer"/>
+                             </div>
+                                <div class="alert alert-danger" *ngIf="EtudiantForm.controls['idPer'].invalid && (EtudiantForm.controls['idPer'].touched || EtudiantForm.controls['idPer'].dirty)">
+                                    L'identifiant est obligatoire
+
+                                </div> -->
+                                <div class="form-group">
+                           <label for="">Numero de Salle:</label>
+                                <input type="number" class="form-control" formControlName="numeroSalle" [(ngModel)]="selectedSalle.numeroSalle"/>
+                             </div>
+                                <div class="alert alert-danger" *ngIf="salleForm.controls['numeroSalle'].invalid && (salleForm.controls['numeroSalle'].touched || salleForm.controls['numeroSalle'].dirty)">
+                                    Le numero de la salle est obligatoire
+
+                                </div>
+
+                                <div class="form-group">
+                                <label for="">Capacite de Salle:</label>
+                                <input type="number" class="form-control" formControlName="capaciteSalle" [(ngModel)]="selectedSalle.capaciteSalle"/>
+                             </div>
+
+                                 
+          
+                             <button class="btn btn-success" [disabled]="salleForm.invalid" 
+                             (click)="operation == 'add' ? addSalle() : updateSalle() " >
+                             {{operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : '' }}
+                           
+                            </button>
+                         </form>
+                        </div>
+
+                            <div *ngIf="operation == 'remove'">
+                                <p class="card_title">
+                                Numero de Salle: {{selectedSalle.numeroSalle}}
+
+                            </p>
+                            <p>
+                                Voulez vous supprimer cette salle?
+                            </p>
+                            <button class="btn btn-success" [disabled]="!selectedSalle.idSalle" (click)="deleteSalle()">Confirmer</button>
+
+
+                            </div>
+                                                    
+
+                         
+
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+            </div>
+
+        </div>
+</div>

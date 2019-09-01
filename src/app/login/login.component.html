@@ -1,83 +1,120 @@
+
+
 <head>
-    <title>Login</title>
-    <!-- Meta-Tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta name="keywords" content="Key Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
+	<title>Login</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Triple Forms Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    
-	<link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
 
+
+
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext"
+	 rel="stylesheet">
+	<!-- //web-fonts -->
 </head>
-
 <body>
 
-<section class="main">
-	<div class="layer">
-		
-		<div class="bottom-grid">
-			<div class="logo">
-				<h1> TCreative</h1>
-			</div>
-			<!--
-			<div class="links">
-				<ul class="links-unordered-list">
-					<li class="active">
-						<a href="#" class="">Login</a>
-					</li>
-					<li class="">
-						<a href="#" class="">About Us</a>
-					</li>
-					<li class="">
-						<a href="#" class="">Register</a>
-					</li>
-					<li class="">
-						<a href="#" class="">Contact</a>
-					</li>
-				</ul>
-			</div>
-			-->
-		</div>
-		<div class="content-w3ls">
+    <div class="main-bg">
+		<!-- title -->
+		<h1>TCreative Centre</h1>
+		<!-- //title -->
+		<div class="sub-main-w3">
 			
-			<div class="text-center icon">
-				
-			</div>
-			<div class="content-bottom">
-				<form [formGroup]="loginForm" (submit)="login()"  >
-					<div class="field-group">
-						<span class="fa fa-user" aria-hidden="true"></span>
-						<div class="wthree-field">
-							<input  id="text1" type="text" value="" placeholder="Username" name="username" formControlName="username" [(ngModel)]="credentials.username" >
-						</div>
-					</div>
-					<div class="field-group">
-						<span class="fa fa-lock" aria-hidden="true"></span>
-						<div class="wthree-field">
-							<input  id="myInput" type="Password" placeholder="Password" name="password" formControlName="password" [(ngModel)]="credentials.password">
-						</div>
-					</div>
-					<div class="wthree-field">
-						<a href=""></a>
-						<button type="submit" class="btn">Log In</button>
-					</div>
+			<!-- vertical tabs -->
+			<div class="vertical-tab">
+				<div id="section1" class="section-w3ls">
+					<input type="radio" name="sections" id="option1" checked>
+					<label for="option1" class="icon-left-w3pvt"><!--<span class="fa fa-user-circle" aria-hidden="true"></span>-->Login</label>
 					
-				</form>
-			</div>
-		</div>
-		
-			
-	</div>
-    
-</section>
+					<article>
 
+	<form action="#" method="post" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+							<h3 class="legend">Login Here</h3>
+							<div class="input">
+								<!--<span class="fa fa-envelope-o" aria-hidden="true"></span>-->
+								<input type="text" placeholder="username" name="username" [(ngModel)]="form.username" #username="ngModel"
+					required />
+					
+					<div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors">Username is required</div>
+        </div>
+							</div>
+							<div class="input">
+								<!--<span class="fa fa-key" aria-hidden="true"></span> -->
+								<input type="password" placeholder="Password" name="password" [(ngModel)]="form.password" #password="ngModel"
+          required minlength="6"/>
+							</div>
+							   <div *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors">Password is required</div>
+          <div *ngIf="password.errors">Password must be at least 6 characters</div>
+        </div>
+							<button type="submit" class="btn submit">Login</button>
+							 <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+          Login failed: {{errorMessage}}
+        </div>
+						</form>
+					
+						</article>
+				</div>
+				<div id="section2" class="section-w3ls">
+					<input type="radio" name="sections" id="option2">
+					<label for="option2" class="icon-left-w3pvt"><span class="fa fa-pencil-square" aria-hidden="true"></span>Register</label>
+							<article>
+						<form action="#" method="post" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+							<h3 class="legend">Register Here</h3>
+							
+								<div class="input">
+								<!--<span class="fa fa-user-o" aria-hidden="true"></span>-->
+								     <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+        <div *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors">Name is required</div>
+        </div>
+      						</div>
+							
+
+							<div class="input">
+								<!--<span class="fa fa-user-o" aria-hidden="true"></span>-->
+								<input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+          required />
+        <div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors">Username is required</div>
+        </div>
+      							</div>
+					 
+							<div class="input">
+								<!--<span class="fa fa-key" aria-hidden="true"></span>-->
+								<input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+          required minlength="6" />
+       				 </div>
+						</form>
+					</article>
+					
+				</div>
+			
+				</div>
+			</div> 
+			<!-- //vertical tabs 
+			<div class="clear"></div>-->
+		</div>
+		<!-- copyright -->
+		<div class="copyright">
+			<h2>&copy; 2019 TCreative. All rights reserved </h2>
+		</div>
+		<!-- //copyright -->
+    
 </body>
+	
+
+

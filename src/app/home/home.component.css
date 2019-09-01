@@ -215,7 +215,7 @@ img {
 /*--end reset--*/
 
 body {
-    background: url(https://cdn.pixabay.com/photo/2015/06/08/15/11/typewriter-801921_960_720.jpg) 0px 0px;
+    background: url(https://cdn.pixabay.com/photo/2015/12/26/05/53/wood-1108307_960_720.jpg) 0px 0px;
     padding: 3em 0;
     background-position: 50% 50%;
     background-size: cover;
@@ -249,6 +249,11 @@ body {
     margin: 0 auto;
     width: 64%;
 }
+.pricing-table2 {
+    margin-top: 50px;   
+    margin-left: 550px;
+    width: 64%;
+}
 .price-top h3 {
     font-size: 2em;
     color: #fff;
@@ -261,14 +266,23 @@ body {
     text-align: center;
 }
 .clr1 {
-    background: #f85a40;
+    background: #f53b57;
 }
 .clr2 {
-    background: #ca3287;
+    background: #3c40c6;
 }
 .clr3{
-    background: #30c39e;
+    background: #0fbcf9;
 }
+
+.clr4 {
+    background: #00d8d6;
+}
+.clr5 {
+    background: #05c46b;
+}
+
+
 .price-bottom ul li {
     font-size: 18px;
     line-height: 1.8em;

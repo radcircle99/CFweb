@@ -1,23 +1,24 @@
 <div>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="" data-toggle="collapse" (click)="afficherSideBar()"><i class="fas fa-bars" aria-hidden="true"></i></a>
-       <hr>
-        <a class="navbar-brand" href="#">___________________TCreative Center</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <a href="" data-toggle="collapse" (click)="afficherSideBar()"><i class="fas fa-bars" aria-hidden="true"></i></a>
+       <hr> -->
+        <a class="navbar-brand" href="#" [routerLink]="['/home']" routerLinkActive="router-link-active" >TCreative Center</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
+    <ul class="navbar-nav" routerLinkActive="active">
+      <!-- < <li class="nav-item active">
         <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="router-link-active">Acceuil<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >Dashboard</a>
-      </li>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['/user']" routerLinkActive="router-link-active" >User</a>
+      </li>  -->
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['/Formation']" routerLinkActive="router-link-active" >Formations disponibles</a>
       </li>
+   
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 Administration
@@ -29,12 +30,14 @@ Administration
         </div>
       </li>
 
-      <li class="nav-item active">
-          <div class="pull-right">
-               <button class ="btn btn-outline-danger btn-sm"  [routerLink]="['/login']" routerLinkActive="router-link-active" >Log Out</button>
+      <!-- <li class="nav-item active">
+          <div class="right">
+               <button class ="btn btn-outline-danger btn-md"  [routerLink]="['/login']" routerLinkActive="router-link-active" >Log Out</button>
           </div>
           
-      </li>
+      </li> -->
+          <button class ="btn btn-outline-danger btn-md"  (click)="logout()">Logout</button>
+
     </ul>
   </div>
 </nav>

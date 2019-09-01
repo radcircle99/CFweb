@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TokenStorageService } from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,22 @@ showSideBar:boolean=false;
   @Output()
   showSideBarChange: EventEmitter<boolean>= new EventEmitter<boolean>();
   
-  constructor() { }
-
-
+  info: any;
+ 
+  constructor(private token: TokenStorageService) { }
+ 
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
   }
-  afficherSideBar(){
-    this.showSideBar = !this.showSideBar;
-    this.showSideBarChange.emit(this.showSideBar);
+ 
+  logout() {
+    this.token.signOut();
+    window.location.reload();
   }
+
+  
 }

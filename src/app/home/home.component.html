@@ -3,10 +3,10 @@
     <app-sidebar></app-sidebar>;
     </div>
          <div class="col-lg-9" >
-        <app-navbar 
+        <!-- <app-navbar 
         [showSideBar]="showHideSideBar"
         (showSideBarChange)="onshowSideBarChange($event)"
-        ></app-navbar>
+        ></app-navbar> -->
         <app-content></app-content>
           </div>
 </div>
@@ -42,14 +42,8 @@ Responsive web template, Smartphone Compatible web template, free webdesigns for
 						<h3>Formations</h3>
 					</div>
 					<div class="price-bottom ">
-						
 						<div class="price2">
-					<ul>
-							<li><i class="fas fa-download"></i>Des formations de qualite</li>
-							<li><i class="fas fa-calendar-alt"></i>Propositions de formations</li>
-							<li><i class="fas fa-tachometer-alt"></i>Retraits de formation</li>
-						</ul>
-								<a href="#" class="clr1 button" [routerLink]="['/Formation']" routerLinkActive="router-link-active">Options formation</a>
+								<a href="#" class="clr1 button" [routerLink]="['/Formation']" routerLinkActive="router-link-active">Gestion formation</a>
 						</div>
 					</div>
 				</div>
@@ -60,13 +54,7 @@ Responsive web template, Smartphone Compatible web template, free webdesigns for
 				<div class="price-bottom">
 					
 					<div class="price2 w3ls">
-						<ul>
-							<li><i class="fas fa-download"></i>Inscription des etudiants </li>
-							<li><i class="fas fa-calendar-alt"></i>Modifications profils etudiants </li>
-							<li><i class="fas fa-tachometer-alt"></i>Suppression de profils </li>
-					
-						</ul>
-						<a href="#" class="clr2 button" [routerLink]="['/Etudiant']" routerLinkActive="router-link-active">Options Etudiants</a>
+						<a href="#" class="clr2 button" [routerLink]="['/Etudiant']" routerLinkActive="router-link-active">Gestion Etudiants</a>
 					</div>
 				</div>
 			</div>
@@ -76,20 +64,46 @@ Responsive web template, Smartphone Compatible web template, free webdesigns for
 						<h3>Professeur</h3>
 					</div>
 					<div class="price-bottom">
-					
 						<div class="price2">
-						<ul>
-							<li><i class="fas fa-download"></i>Inscription des enseignants </li>
-							<li><i class="fas fa-calendar-alt"></i>Modifications profils enseignants </li>
-							<li><i class="fas fa-tachometer-alt"></i>Suppression des enseignants </li>
-					    </ul>
-							<a href="#" class="clr3 button" [routerLink]="['/professeur']" routerLinkActive="router-link-active">OPtions Professeur </a>
+							<a href="#" class="clr3 button" [routerLink]="['/professeur']" routerLinkActive="router-link-active">Gestion Professeur </a>
 						</div>
 					</div>
 				</div>
 				<div class="clear"></div>
 			</div>
-			
+            
+            <div class="pricing-table2">
+				<div class="pricing">
+					<div class="price-top clr4 w3ls">
+						<h3>Salles</h3>
+					</div>
+					<div class="price-bottom">
+						<div class="price2">
+								<a href="#" class="clr4 button" [routerLink]="['/salle']" routerLinkActive="router-link-active">Gestion Salles</a>
+						</div>
+					</div>
+				</div>
+			    <div class="pricing pri2">
+					<div class="price-top clr5">
+						<h3>Charges</h3>
+					</div>
+				<div class="price-bottom">
+					
+					<div class="price2 w3ls">
+						<a href="#" class="clr5 button" [routerLink]="['/charge']" routerLinkActive="router-link-active">Gestion Charges</a>
+					</div>
+				</div>
+			</div>
+				
+				
+				<div class="clear">
+                    <br><br><br><br><br><br><br>
+                </div>
+                
+			</div>
+
+            
+
 		</div>	
-					<div class="clear"></div>
+					 
 				</body>
